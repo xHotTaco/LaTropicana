@@ -1,2 +1,2 @@
 # LaTropicana
-Proyecto de moviles de Bar La Tropicana
+Proyecto moviles de Bar La Tropicana
