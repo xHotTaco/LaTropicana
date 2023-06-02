@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">Prueba2</string>
+    <string name="app_name">La Tropicana</string>
+
+    <!-- Para Cuentas -->
+    <string name="Inicio">Inicio de sesion</string>
+    <string name="Usuario">Ingrese correo</string>
+    <string name="Contrasena">Ingrese contraseña</string>
+    <string name="InicioS">Iniciar sesion</string>
+    <string name="Cuenta">Crear cuenta</string>
+
+    <!-- Menu lateral -->
+    <string name="Home">Inicio</string>
+    <string name="Orders">Pedidos</string>
+    <string name="Producs">Productos</string>
+    <string name="Empleado">Empleados</string>
+
+    <!-- Formulario productos -->
+    <string name="nameProduct">Nombre de producto</string>
+    <string name="Price">Precio</string>
+    <string name="infoPro">Descripcion de producto</string>
+    <string name="tipoPro">Tipo de Producto</string>
+    <string name="Registro">Registrar</string>
+
+    <!-- Formulario empleado-->
+    <string name="Name">Ingresa Nombre</string>
+    <string name="age">Ingresa Edad</string>
+    <string name="RFC">Ingresa RFC</string>
+    <string name="Puesto">Puesto</string>
+
+    <!-- Mesa? -->
+    <string name="Ver">Ver orden</string>
+
+    <!-- Otros botones -->
+
+    <string name="Salir">Salir</string>
+    <string name="Pedido">Realizar pedido</string>
+    <string name="canPedido">Cancelar pedido</string>
+    <string name="Back">Volver</string>
 </resources>
