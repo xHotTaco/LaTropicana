@@ -36,4 +36,22 @@
     <string name="Pedido">Realizar pedido</string>
     <string name="canPedido">Cancelar pedido</string>
     <string name="Back">Volver</string>
+
+    <!-- Hasta aqui es lo ultimo -->
+
+    <string name="title_activity_menu_lateral">MenuLateralActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">La Tropicana</string>
+    <string name="nav_header_subtitle">tropicana@noreply.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Pedidos</string>
+    <string name="menu_gallery">Productos</string>
+    <string name="menu_slideshow">Empleados</string>
+
+
+
+
 </resources>

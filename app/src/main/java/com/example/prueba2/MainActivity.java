@@ -37,4 +37,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, registroActivity.class);
         startActivity(intent);
     }
+
+    public void irventana(View view){
+        Intent intent = new Intent(this, MenuLateralActivity.class);
+        startActivity(intent);
+    }
+
 }
