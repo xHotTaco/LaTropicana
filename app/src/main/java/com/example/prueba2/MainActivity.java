@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         uname = (EditText) findViewById(R.id.txt_user);
         passwd = (EditText) findViewById(R.id.txt_password);
     }
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if ((input.equals("admin") || input.equals("empleado")) && passwd.getText().toString().equals("123")) {
-            Toast.makeText(this, "admin", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MenuLateralActivity.class);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
         }
@@ -35,11 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void irRegistro(View view){
         Intent intent = new Intent(this, registroActivity.class);
-        startActivity(intent);
-    }
-
-    public void irventana(View view){
-        Intent intent = new Intent(this, MenuLateralActivity.class);
         startActivity(intent);
     }
 

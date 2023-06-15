@@ -6,8 +6,22 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#F9F7F7</color>
     <color name="pink">#FF00FF</color>
+    <color name="dark_blue">#000117</color>
+    <color name="dark_purple">#1C1245</color>
+    <color name="bright_blue">#1B96F4</color>
+
+    <color name="shark">#202124</color>
+    <color name="shark_light">#2E2F32</color>
+    <color name="athens_gray">#e8e9ec</color>
+    <color name="tonys_pink">#e49085</color>
+    <color name="don_juan">#594645</color>
+    <color name="shuttle_gray">#606367</color>
+    <color name="mako">#3d4043</color>
+
+    <color name="bg1">#560B79</color>
+    <color name="bg2">#10133A</color>
 
     <color name="coloruno">#1C1245</color>
     <color name="colordos">#490C6E</color>

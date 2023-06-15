@@ -13,8 +13,9 @@
             android:icon="@mipmap/beer_icon"
             android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@mipmap/emple_icon"
-            android:title="@string/menu_slideshow" />
+        android:id="@+id/nav_slideshow"
+        android:icon="@mipmap/emple_icon"
+        android:title="@string/menu_slideshow" />
     </group>
+
 </menu>
