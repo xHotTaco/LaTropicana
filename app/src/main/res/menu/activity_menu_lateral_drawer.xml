@@ -3,6 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <group
+        android:id="@+id/group_one"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/mesero_icon"
+            android:title="@string/menu_home"
+            android:checked="true"
+            />
+
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/group_two">
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@mipmap/beer_icon"
+            android:title="@string/menu_gallery" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/group_three">
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@mipmap/emple_icon"
+            android:title="@string/menu_slideshow" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/group_four">
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/exit"
+            android:title="@string/logout" />
+    </group>
+    <!--
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
@@ -17,5 +56,6 @@
         android:icon="@mipmap/emple_icon"
         android:title="@string/menu_slideshow" />
     </group>
+    -->
 
 </menu>

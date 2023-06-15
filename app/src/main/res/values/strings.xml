@@ -20,6 +20,7 @@
     <string name="infoPro">Descripcion de producto</string>
     <string name="tipoPro">Tipo de Producto</string>
     <string name="Registro">Registrar</string>
+    <string name="logout">Salir</string>
 
     <!-- Formulario empleado-->
     <string name="Name">Ingresa Nombre</string>
