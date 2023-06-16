@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 if (employeeRegistry()) {
                     intent = new Intent(MainActivity.this, MenuLateralActivity.class);
                 } else if (userRegistry()) {
-                    intent = new Intent(MainActivity.this, LoginActivity.class); // TODO: change later
+                    intent = new Intent(MainActivity.this, MenuCliente.class);
                 } else {
                     intent = new Intent(MainActivity.this, LoginActivity.class);
                 }

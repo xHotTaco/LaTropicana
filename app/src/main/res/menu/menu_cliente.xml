@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Menu"
+        android:id="@+id/menu"
+        android:icon="@drawable/wine_bottle"
+        />
+    <item android:title="Cuenta"
+        android:id="@+id/cuenta"
+        android:icon="@drawable/bill_wallet"
+        />
+    <item android:title="Carrito"
+        android:id="@+id/carrito"
+        android:icon="@drawable/cart"
+        />
+</menu>

@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             } else if (usr.equals(mesas[i].getUsername()) && pass.equals(mesas[i].getPassword())) {
                 // Cliente cliente = new Cliente(usr, pass, "Cliente", true);
                 saveUser(mesas[i]);
-                Intent usr_intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent usr_intent = new Intent(LoginActivity.this, MenuCliente.class);
                 startActivity(usr_intent);
                 finish();
                 success = true;

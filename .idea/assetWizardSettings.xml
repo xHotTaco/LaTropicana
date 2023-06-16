@@ -303,8 +303,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="exit" />
-                            <entry key="sourceFile" value="$USER_HOME$/Pictures/svg/tropicana/exit.svg" />
+                            <entry key="outputName" value="cart" />
+                            <entry key="sourceFile" value="$USER_HOME$/Pictures/svg/tropicana/cart.svg" />
                           </map>
                         </option>
                       </PersistentState>
