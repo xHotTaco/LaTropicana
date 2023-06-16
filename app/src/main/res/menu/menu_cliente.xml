@@ -13,4 +13,9 @@
         android:id="@+id/carrito"
         android:icon="@drawable/cart"
         />
+    <item android:title="@string/Salir"
+        android:id="@+id/salir_cliente"
+        android:onClick="logout_cliente"
+        android:icon="@drawable/exit"
+        />
 </menu>
