@@ -52,25 +52,4 @@ public class MainActivity extends AppCompatActivity {
         return preferences.getBoolean("exists", false);
     }
 
-    /*
-    public void login(View view) {
-        String input = String.valueOf(uname.getText());
-        if (input.equals("mesa")) {
-            Intent intent = new Intent(this, RegistroActivity.class);
-            startActivity(intent);
-        }
-        else if ((input.equals("admin") || input.equals("empleado")) && passwd.getText().toString().equals("123")) {
-            Intent intent = new Intent(this, MenuLateralActivity.class);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-        }
-    }
-     */
-
-    public void irRegistro(View view){
-        Intent intent = new Intent(this, RegistroActivity.class);
-        startActivity(intent);
-    }
-
 }

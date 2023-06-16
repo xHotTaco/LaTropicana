@@ -12,23 +12,8 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     private EditText uname, passwd;
 
-    private String[] users = {
-            "mesa1",
-            "mesa2",
-            "mesa3",
-            "mesa4",
-            "mesa5",
-            "mesa6"
-    };
-
-    private String[] employees = {
-            "admin",
-            "victor",
-            "david",
-            "carlos",
-            "diego",
-            "test"
-    };
+    private Empleado[] employees = new Empleado[4];
+    private Cliente[] mesas = new Cliente[8];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +22,13 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         uname = (EditText) findViewById(R.id.txt_user);
         passwd = (EditText) findViewById(R.id.txt_password);
+        employees[0] = new Empleado("admin", "123", "Empleado", true);
+        employees[1] = new Empleado("victor", "123", "Empleado", true);
+        employees[2] = new Empleado("carlos", "123", "Empleado", true);
+        employees[3] = new Empleado("diego", "123", "Empleado", true);
+        for (int i=0; i<8; ++i) {
+            mesas[i] = new Cliente("mesa" + i, "mesa", "Cliente", true);
+        }
     }
 
     public void login(View view) {
@@ -44,17 +36,16 @@ public class LoginActivity extends AppCompatActivity {
         String pass = passwd.getText().toString();
         boolean success = false;
         for (int i=0; i<employees.length; ++i) {
-            if (usr.equals(employees[i]) && pass.equals("123")) {
-                Empleado empleado = new Empleado(usr, pass, "Empleado", true);
-                saveUser(empleado);
+            if (usr.equals(employees[i].getUsername()) && pass.equals(employees[i].getPassword())) {
+                saveUser(employees[i]);
                 Intent empl_intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(empl_intent);
                 finish();
                 success = true;
                 break;
-            } else if (usr.equals(users[i]) && pass.equals("123")) {
-                Cliente cliente = new Cliente(usr, pass, "Cliente", true);
-                saveUser(cliente);
+            } else if (usr.equals(mesas[i].getUsername()) && pass.equals(mesas[i].getPassword())) {
+                // Cliente cliente = new Cliente(usr, pass, "Cliente", true);
+                saveUser(mesas[i]);
                 Intent usr_intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(usr_intent);
                 finish();
@@ -81,4 +72,10 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("exists", usr.isExists());
         editor.apply();
     }
+
+    public void irRegistro(View view){
+        Intent intent = new Intent(this, RegistroActivity.class);
+        startActivity(intent);
+    }
+
 }
