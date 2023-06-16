@@ -37,25 +37,18 @@
         android:checkableBehavior="single"
         android:id="@+id/group_four">
         <item
-            android:id="@+id/logout"
+            android:id="@+id/nav_logout"
             android:icon="@drawable/exit"
+            android:onClick="logout"
             android:title="@string/logout" />
     </group>
-    <!--
-    <group android:checkableBehavior="single">
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/group_five">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@mipmap/mesero_icon"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@mipmap/beer_icon"
-            android:title="@string/menu_gallery" />
-        <item
-        android:id="@+id/nav_slideshow"
-        android:icon="@mipmap/emple_icon"
-        android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_empty"
+            android:title="" />
     </group>
-    -->
 
 </menu>
