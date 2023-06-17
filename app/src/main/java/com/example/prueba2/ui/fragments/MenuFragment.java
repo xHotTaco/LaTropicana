@@ -58,20 +58,26 @@ public class MenuFragment extends Fragment {
     private Producto[] wines = new Producto[10];
     private Producto[] foods = new Producto[10];
 
-    private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mSizes = new ArrayList<>();
-    private ArrayList<String> mPrices = new ArrayList<>();
+    private ArrayList<String> mImageNamesBeer = new ArrayList<>();
+    private ArrayList<String> mNamesBeer = new ArrayList<>();
+    private ArrayList<String> mSizesBeer = new ArrayList<>();
+    private ArrayList<Double> mPricesBeer = new ArrayList<>();
 
     private ArrayList<String> mImageNamesWine = new ArrayList<>();
     private ArrayList<String> mNamesWine = new ArrayList<>();
     private ArrayList<String> mSizesWine = new ArrayList<>();
-    private ArrayList<String> mPricesWine = new ArrayList<>();
+    private ArrayList<Double> mPricesWine = new ArrayList<>();
 
     private ArrayList<String> mImageNamesFood = new ArrayList<>();
     private ArrayList<String> mNamesFood = new ArrayList<>();
     private ArrayList<String> mSizesFood = new ArrayList<>();
-    private ArrayList<String> mPricesFood = new ArrayList<>();
+    private ArrayList<Double> mPricesFood = new ArrayList<>();
+
+    private ArrayList<String> mImageNamesSnaks = new ArrayList<>();
+    private ArrayList<String> mNamesSnaks = new ArrayList<>();
+    private ArrayList<String> mSizesSnaks = new ArrayList<>();
+    private ArrayList<Double> mPricesSnaks = new ArrayList<>();
+
     private View viewRoot;
 
     @Override
@@ -88,76 +94,72 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         viewRoot = inflater.inflate(R.layout.fragment_menu, container, false);
-        //createBeerView();
+        createBeerView();
         createWineView();
-        //createFoodView();
+        createFoodView();
+        createSnaksView();
 
         return viewRoot;
     }
 
     private void createBeerView() {
-        /*
-        mImageNames.add("https://hebmx.vtexassets.com/arquivos/ids/604983-800-800?v=638218521196070000&width=800&height=800&aspect=true");
-        mNames.add("Corona extra");
-        mSizes.add("355 ml");
-        mPrices.add("$21.00");
+        mImageNamesBeer.add("https://hebmx.vtexassets.com/arquivos/ids/604983-800-800?v=638218521196070000&width=800&height=800&aspect=true");
+        mNamesBeer.add("Corona extra");
+        mSizesBeer.add("355 ml");
+        mPricesBeer.add(21.00);
 
-        mImageNames.add("https://lapencavinos.com/wp-content/uploads/2019/10/modelo-especial.png");
-        mNames.add("Modelo especial");
-        mSizes.add("355 ml");
-        mPrices.add("$28.00");
-
-        mImageNames.add("https://hebmx.vtexassets.com/arquivos/ids/604983-800-800?v=638218521196070000&width=800&height=800&aspect=true");
-        mNames.add("Corona extra");
-        mSizes.add("355 ml");
-        mPrices.add("$21.00");
-
-        mImageNames.add("https://lapencavinos.com/wp-content/uploads/2019/10/modelo-especial.png");
-        mNames.add("Modelo especial");
-        mSizes.add("355 ml");
-        mPrices.add("$28.00");
+        mImageNamesBeer.add("https://lapencavinos.com/wp-content/uploads/2019/10/modelo-especial.png");
+        mNamesBeer.add("Modelo especial");
+        mSizesBeer.add("355 ml");
+        mPricesBeer.add(28.00);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = viewRoot.findViewById(R.id.recycler_view_beers);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerAdapter adapter = new RecyclerAdapter(viewRoot.getContext(), mImageNames, mNames, mSizes, mPrices);
+        RecyclerAdapter adapter = new RecyclerAdapter(viewRoot.getContext(), mImageNamesBeer, mNamesBeer, mSizesBeer, mPricesBeer);
         recyclerView.setAdapter(adapter);
-
-         */
     }
 
     private void createWineView() {
-        /*
         mImageNamesWine.add("https://www.lanaval.com.mx/107740-product_default/whisky-black-and-white-700-ml.jpg");
         mNamesWine.add("Black & white");
         mSizesWine.add("700 ml");
-        mPricesWine.add("$199.00");
-         */
-        wines[0] = new Producto("Black & white", 199, "700 ml", "https://www.lanaval.com.mx/107740-product_default/whisky-black-and-white-700-ml.jpg");
+        mPricesWine.add(199.00);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewWine = viewRoot.findViewById(R.id.recycler_view_wine);
         recyclerViewWine.setLayoutManager(layoutManager);
-        RecyclerAdapter adapterWine = new RecyclerAdapter(viewRoot.getContext(), wines[0].getImagen(), wines[0].getNombre(), wines[0].getDescripcion(), String.valueOf(wines[0].getPrecio()));
+        RecyclerAdapter adapterWine = new RecyclerAdapter(viewRoot.getContext(), mImageNamesWine, mNamesWine, mSizesWine, mPricesWine);
         recyclerViewWine.setAdapter(adapterWine);
     }
 
     private void createFoodView() {
-        /*
         mImageNamesFood.add("https://static.vecteezy.com/system/resources/previews/021/952/562/original/tasty-hamburger-on-transparent-background-png.png");
         mNamesFood.add("Hamburguesa");
         mSizesFood.add("Clasica");
-        mPricesFood.add("$79.00");
+        mPricesFood.add(79.00);
         mImageNamesFood.add("https://www.ballparkbrand.com/sites/default/files/Hero_Dog_Full_Crop_0.png");
         mNamesFood.add("Hot dog");
         mSizesFood.add("Clasico con pepinillos");
-        mPricesFood.add("$30.00");
+        mPricesFood.add(30.00);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewFood = viewRoot.findViewById(R.id.recycler_view_food);
         recyclerViewFood.setLayoutManager(layoutManager);
         RecyclerAdapter adapterFood = new RecyclerAdapter(viewRoot.getContext(), mImageNamesFood, mNamesFood, mSizesFood, mPricesFood);
         recyclerViewFood.setAdapter(adapterFood);
-        */
+    }
+
+    private void createSnaksView() {
+        mImageNamesSnaks.add("https://images.ctfassets.net/l5fkpck1mwg3/5Ih3U85mGJXFzfQrfe9yP4/334041e07865621f88f687c6a5291463/Appetizers_French_Fries.png");
+        mNamesSnaks.add("Papas a la francesa");
+        mSizesSnaks.add("Medianas");
+        mPricesSnaks.add(29.00);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerViewFood = viewRoot.findViewById(R.id.recycler_view_snaks);
+        recyclerViewFood.setLayoutManager(layoutManager);
+        RecyclerAdapter adapterSnaks = new RecyclerAdapter(viewRoot.getContext(), mImageNamesSnaks, mNamesSnaks, mSizesSnaks, mPricesSnaks);
+        recyclerViewFood.setAdapter(adapterSnaks);
     }
 }
