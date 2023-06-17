@@ -1,5 +1,7 @@
 package com.example.prueba2.ui.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +15,10 @@ import android.view.ViewGroup;
 import com.example.prueba2.Producto;
 import com.example.prueba2.R;
 import com.example.prueba2.ui.adaptadores.RecyclerAdapter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
@@ -103,15 +108,19 @@ public class MenuFragment extends Fragment {
     }
 
     private void createBeerView() {
-        mImageNamesBeer.add("https://hebmx.vtexassets.com/arquivos/ids/604983-800-800?v=638218521196070000&width=800&height=800&aspect=true");
-        mNamesBeer.add("Corona extra");
-        mSizesBeer.add("355 ml");
-        mPricesBeer.add(21.00);
-
-        mImageNamesBeer.add("https://lapencavinos.com/wp-content/uploads/2019/10/modelo-especial.png");
-        mNamesBeer.add("Modelo especial");
-        mSizesBeer.add("355 ml");
-        mPricesBeer.add(28.00);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key_productos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("beers", null);
+        Producto[] productos = gson.fromJson(json, Producto[].class);
+        if (productos != null) {
+            for (int i = 0; i < productos.length; i++) {
+                mImageNamesBeer.add(productos[i].getImagen());
+                mNamesBeer.add(productos[i].getNombre());
+                mSizesBeer.add(productos[i].getDescripcion());
+                mPricesBeer.add(productos[i].getPrecio());
+            }
+        }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = viewRoot.findViewById(R.id.recycler_view_beers);
@@ -121,10 +130,19 @@ public class MenuFragment extends Fragment {
     }
 
     private void createWineView() {
-        mImageNamesWine.add("https://www.lanaval.com.mx/107740-product_default/whisky-black-and-white-700-ml.jpg");
-        mNamesWine.add("Black & white");
-        mSizesWine.add("700 ml");
-        mPricesWine.add(199.00);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key_productos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("wines", null);
+        Producto[] productos = gson.fromJson(json, Producto[].class);
+        if (productos != null) {
+            for (int i = 0; i < productos.length; i++) {
+                mImageNamesWine.add(productos[i].getImagen());
+                mNamesWine.add(productos[i].getNombre());
+                mSizesWine.add(productos[i].getDescripcion());
+                mPricesWine.add(productos[i].getPrecio());
+            }
+        }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewWine = viewRoot.findViewById(R.id.recycler_view_wine);
@@ -134,14 +152,19 @@ public class MenuFragment extends Fragment {
     }
 
     private void createFoodView() {
-        mImageNamesFood.add("https://static.vecteezy.com/system/resources/previews/021/952/562/original/tasty-hamburger-on-transparent-background-png.png");
-        mNamesFood.add("Hamburguesa");
-        mSizesFood.add("Clasica");
-        mPricesFood.add(79.00);
-        mImageNamesFood.add("https://www.ballparkbrand.com/sites/default/files/Hero_Dog_Full_Crop_0.png");
-        mNamesFood.add("Hot dog");
-        mSizesFood.add("Clasico con pepinillos");
-        mPricesFood.add(30.00);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key_productos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("food", null);
+        Producto[] productos = gson.fromJson(json, Producto[].class);
+        if (productos != null) {
+            for (int i = 0; i < productos.length; i++) {
+                mImageNamesFood.add(productos[i].getImagen());
+                mNamesFood.add(productos[i].getNombre());
+                mSizesFood.add(productos[i].getDescripcion());
+                mPricesFood.add(productos[i].getPrecio());
+            }
+        }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewFood = viewRoot.findViewById(R.id.recycler_view_food);
@@ -151,11 +174,21 @@ public class MenuFragment extends Fragment {
     }
 
     private void createSnaksView() {
-        mImageNamesSnaks.add("https://images.ctfassets.net/l5fkpck1mwg3/5Ih3U85mGJXFzfQrfe9yP4/334041e07865621f88f687c6a5291463/Appetizers_French_Fries.png");
-        mNamesSnaks.add("Papas a la francesa");
-        mSizesSnaks.add("Medianas");
-        mPricesSnaks.add(29.00);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("key_productos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("snaks", null);
+        Producto[] productos = gson.fromJson(json, Producto[].class);
+        if (productos != null) {
+            for (int i = 0; i < productos.length; i++) {
+                mImageNamesSnaks.add(productos[i].getImagen());
+                mNamesSnaks.add(productos[i].getNombre());
+                mSizesSnaks.add(productos[i].getDescripcion());
+                mPricesSnaks.add(productos[i].getPrecio());
+            }
+        }
 
+        Type type = new TypeToken<Producto[]>() {}.getType();
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewFood = viewRoot.findViewById(R.id.recycler_view_snaks);
         recyclerViewFood.setLayoutManager(layoutManager);

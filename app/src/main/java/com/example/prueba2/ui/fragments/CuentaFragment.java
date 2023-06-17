@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.prueba2.Producto;
 import com.example.prueba2.R;
@@ -109,5 +110,6 @@ public class CuentaFragment extends Fragment {
         editor = pedidos.edit();
         editor.clear();
         editor.commit();
+        Toast.makeText(getActivity(), "Tu cuenta esta en camino", Toast.LENGTH_SHORT).show();
     }
 }
