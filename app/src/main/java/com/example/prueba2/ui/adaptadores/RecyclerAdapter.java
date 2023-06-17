@@ -20,7 +20,6 @@ import com.bumptech.glide.Glide;
 import com.example.prueba2.MenuCliente;
 import com.example.prueba2.Producto;
 import com.example.prueba2.R;
-import com.example.prueba2.databinding.ActivityMainBinding;
 import com.example.prueba2.ui.fragments.CarritoFragment;
 import com.google.gson.Gson;
 

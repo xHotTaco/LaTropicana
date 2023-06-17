@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.prueba2.Producto;
 import com.example.prueba2.R;
+import com.example.prueba2.ui.adaptadores.CartAdapter;
 import com.example.prueba2.ui.adaptadores.RecyclerAdapter;
 import com.google.gson.Gson;
 
@@ -38,6 +39,11 @@ public class CarritoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView conter;
+    private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mDescriptions = new ArrayList<>();
+    private ArrayList<Double> mPrices = new ArrayList<>();
 
     private View viewRoot;
 
@@ -72,33 +78,15 @@ public class CarritoFragment extends Fragment {
         }
     }
 
-    private TextView conter;
-    TextView results;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         viewRoot = inflater.inflate(R.layout.fragment_carrito, container, false);
         conter = viewRoot.findViewById(R.id.txt_carrito_contador);
-        results = viewRoot.findViewById(R.id.id_txt_cart);
 
-        SharedPreferences preferences = getActivity().getSharedPreferences("carrito", getActivity().MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = preferences.getString("productos", null);
-        Type type = new com.google.gson.reflect.TypeToken<ArrayList<Producto>>(){}.getType();
-        RecyclerAdapter.products = gson.fromJson(json, type);
-        if (RecyclerAdapter.products == null) {
-            RecyclerAdapter.products = new ArrayList<>();
-        }
-        for (Producto producto : RecyclerAdapter.products) {
-            results.append(
-                    "Nombre: " + producto.getNombre() + "\n" +
-                    "Descripción: " + producto.getDescripcion() + "\n" +
-                    "Precio: " + producto.getPrecio() + "\n\n");
-        }
-        conter.setText(String.valueOf(RecyclerAdapter.products.size()));
-
+        getProducts();
+        showProducts();
         Button limpiar = viewRoot.findViewById(R.id.btn_limpiar_pedido);
         limpiar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +103,40 @@ public class CarritoFragment extends Fragment {
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
+        RecyclerAdapter.products.clear();
+        mImages.clear();
+        mNames.clear();
+        mDescriptions.clear();
+        mPrices.clear();
+        getProducts();
+        showProducts();
         conter.setText("0");
-        results.setText("");
     }
+
+    private void getProducts() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("carrito", getActivity().MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("productos", null);
+        Type type = new com.google.gson.reflect.TypeToken<ArrayList<Producto>>(){}.getType();
+        RecyclerAdapter.products = gson.fromJson(json, type);
+        if (RecyclerAdapter.products == null) {
+            RecyclerAdapter.products = new ArrayList<>();
+        }
+    }
+
+    private void showProducts() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.VERTICAL, false);
+        RecyclerView recyclerViewFood = viewRoot.findViewById(R.id.reclyer_view_cart);
+        recyclerViewFood.setLayoutManager(layoutManager);
+        for (Producto producto : RecyclerAdapter.products) {
+            mImages.add(producto.getImagen());
+            mNames.add(producto.getNombre());
+            mDescriptions.add(producto.getDescripcion());
+            mPrices.add(producto.getPrecio());
+        }
+        CartAdapter adapterSnaks = new CartAdapter(viewRoot.getContext(), mImages, mNames, mDescriptions, mPrices);
+        recyclerViewFood.setAdapter(adapterSnaks);
+        conter.setText(String.valueOf(RecyclerAdapter.products.size()));
+    }
+
 }

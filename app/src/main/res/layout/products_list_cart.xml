@@ -15,18 +15,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/dark_blue">
+
             <ImageView
+                android:id="@+id/image_product_cart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="180dp"
+                android:maxWidth="100dp"
                 android:maxHeight="100dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beer"
-                android:layout_marginLeft="6dp"
                 android:layout_centerVertical="true"
-                android:id="@+id/image_product_cart"
-                />
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/beer" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
