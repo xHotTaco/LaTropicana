@@ -80,7 +80,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$USER_HOME$/Pictures/svg/tropicana/logo.png" />
+                                                <entry key="imagePath" value="$USER_HOME$/Downloads/btnComida.png" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -114,6 +114,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="0e0e0e" />
+                                      <entry key="generateLegacyIcon" value="false" />
+                                      <entry key="generatePlayStoreIcon" value="false" />
+                                      <entry key="generateRoundIcon" value="false" />
+                                      <entry key="outputName" value="comidas_cliente" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -303,8 +307,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="cart" />
-                            <entry key="sourceFile" value="$USER_HOME$/Pictures/svg/tropicana/cart.svg" />
+                            <entry key="outputName" value="burger" />
+                            <entry key="sourceFile" value="$USER_HOME$/Pictures/svg/tropicana/burger.svg" />
                           </map>
                         </option>
                       </PersistentState>
