@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.TypedArrayUtils;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import kotlin.internal.ProgressionUtilKt;
 
@@ -43,10 +45,10 @@ public class CarritoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private TextView conter;
-    private ArrayList<String> mImages = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mDescriptions = new ArrayList<>();
     private ArrayList<Double> mPrices = new ArrayList<>();
+    private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mDescriptions = new ArrayList<>();
 
     private View viewRoot;
 
@@ -122,13 +124,24 @@ public class CarritoFragment extends Fragment {
         // Mandar pedido a meseros y a la cuenta
         SharedPreferences preferencesPedido = getActivity().getSharedPreferences("pedido", getActivity().MODE_PRIVATE);
         SharedPreferences.Editor editorPedido = preferencesPedido.edit();
+        Gson gson = new Gson();
+        String json = preferencesPedido.getString("arr_productos", null);
+        Type type = new com.google.gson.reflect.TypeToken<Producto[]>(){}.getType();
+        Producto[] productos = gson.fromJson(json, type);
+        if (productos != null) { // TODO: Ver si se puede evitar ya que consume memoria innecesaria
+            for (Producto producto : productos) {
+                mNames.add(producto.getNombre());
+                mPrices.add(producto.getPrecio());
+                mImages.add(producto.getImagen());
+                mDescriptions.add(producto.getDescripcion());
+            }
+        }
         Producto[] pedirProductos = new Producto[mNames.size()];
-        for (int i = 0; i < pedirProductos.length; ++i) {
+        for (int i = 0; i < mNames.size(); i++) {
             pedirProductos[i] = new Producto(mNames.get(i), mPrices.get(i), mImages.get(i), mDescriptions.get(i));
         }
-        Gson gson = new Gson();
-        String json = gson.toJson(pedirProductos);
-        editorPedido.putString("arr_productos", json);
+        String jsonSend = gson.toJson(pedirProductos);
+        editorPedido.putString("arr_productos", jsonSend);
         editorPedido.apply();
 
         limpiarCarro(view);

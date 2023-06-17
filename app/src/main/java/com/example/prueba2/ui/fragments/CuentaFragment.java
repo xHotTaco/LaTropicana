@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.prueba2.Producto;
@@ -51,6 +52,7 @@ public class CuentaFragment extends Fragment {
     }
 
     private TextView txt_total, txt_results;
+    private Button btn_pagar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,17 +61,25 @@ public class CuentaFragment extends Fragment {
 
         txt_total = (TextView) vistaCuenta.findViewById(R.id.txt_cuenta_titulo);
         txt_results = (TextView) vistaCuenta.findViewById(R.id.txt_resultado_cuenta);
-
-        SharedPreferences preferences = getActivity().getSharedPreferences("cuenta", getActivity().MODE_PRIVATE);
-        float total = preferences.getFloat("cuenta", 0);
-        txt_total.setText("Total a pagar: " + " $: " + String.valueOf(total));
+        btn_pagar = (Button) vistaCuenta.findViewById(R.id.btn_pagar_cuenta);
 
         verPedidos();
+
+        btn_pagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                realizarPago(v);
+            }
+        });
 
         return vistaCuenta;
     }
 
     private void verPedidos() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("cuenta", getActivity().MODE_PRIVATE);
+        float total = preferences.getFloat("cuenta", 0);
+        txt_total.setText("Total a pagar: " + " $: " + String.valueOf(total));
+
         SharedPreferences pedidos = getActivity().getSharedPreferences("pedido", getActivity().MODE_PRIVATE);
         Gson gson = new Gson();
         String json = pedidos.getString("arr_productos", null);
@@ -88,5 +98,16 @@ public class CuentaFragment extends Fragment {
             }
             txt_results.setText(resultado);
         }
+    }
+
+    private void realizarPago(View view) {
+        SharedPreferences cuenta = getActivity().getSharedPreferences("cuenta", getActivity().MODE_PRIVATE);
+        SharedPreferences pedidos = getActivity().getSharedPreferences("pedido", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editor = cuenta.edit();
+        editor.clear();
+        editor.commit();
+        editor = pedidos.edit();
+        editor.clear();
+        editor.commit();
     }
 }
