@@ -19,12 +19,27 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
+    /*
     private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mSizes = new ArrayList<>();
     private ArrayList<String> mPrices = new ArrayList<>();
+     */
     private Context context;
+    private String mImageNames;
+    private String mNames;
+    private String mSizes;
+    private String mPrices;
 
+    public RecyclerAdapter(Context context, String mImageNames, String mNames, String mSizes, String mPrices) {
+        this.mImageNames = mImageNames;
+        this.mNames = mNames;
+        this.mSizes = mSizes;
+        this.mPrices = mPrices;
+        this.context = context;
+    }
+
+    /*
     public RecyclerAdapter(Context context, ArrayList<String> mImageNames, ArrayList<String> mNames, ArrayList<String> mSizes, ArrayList<String> mPrices) {
         this.mImageNames = mImageNames;
         this.mNames = mNames;
@@ -32,6 +47,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         this.mPrices = mPrices;
         this.context = context;
     }
+
+     */
 
     @NonNull
     @Override
@@ -45,23 +62,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         Glide.with(context)
                 .asBitmap()
-                .load(mImageNames.get(position))
+                .load(mImageNames)
                 .into(holder.image);
 
-        holder.name.setText(mNames.get(position));
-        holder.size.setText(mSizes.get(position));
-        holder.price.setText(mPrices.get(position));
+        holder.name.setText(mNames);
+        holder.size.setText(mSizes);
+        holder.price.setText(mPrices);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, mNames.get(position) + " agregado al carrito.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, mNames + " agregado al carrito.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mNames.size();
+        return mNames.length();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

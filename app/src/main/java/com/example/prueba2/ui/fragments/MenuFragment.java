@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.prueba2.Producto;
 import com.example.prueba2.R;
 import com.example.prueba2.ui.adaptadores.RecyclerAdapter;
 
@@ -53,6 +54,10 @@ public class MenuFragment extends Fragment {
         return fragment;
     }
 
+    private Producto[] beers = new Producto[10];
+    private Producto[] wines = new Producto[10];
+    private Producto[] foods = new Producto[10];
+
     private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mSizes = new ArrayList<>();
@@ -83,14 +88,15 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         viewRoot = inflater.inflate(R.layout.fragment_menu, container, false);
-        createBeerView();
+        //createBeerView();
         createWineView();
-        createFoodView();
+        //createFoodView();
 
         return viewRoot;
     }
 
     private void createBeerView() {
+        /*
         mImageNames.add("https://hebmx.vtexassets.com/arquivos/ids/604983-800-800?v=638218521196070000&width=800&height=800&aspect=true");
         mNames.add("Corona extra");
         mSizes.add("355 ml");
@@ -116,22 +122,28 @@ public class MenuFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         RecyclerAdapter adapter = new RecyclerAdapter(viewRoot.getContext(), mImageNames, mNames, mSizes, mPrices);
         recyclerView.setAdapter(adapter);
+
+         */
     }
 
     private void createWineView() {
+        /*
         mImageNamesWine.add("https://www.lanaval.com.mx/107740-product_default/whisky-black-and-white-700-ml.jpg");
         mNamesWine.add("Black & white");
         mSizesWine.add("700 ml");
         mPricesWine.add("$199.00");
+         */
+        wines[0] = new Producto("Black & white", 199, "700 ml", "https://www.lanaval.com.mx/107740-product_default/whisky-black-and-white-700-ml.jpg");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(viewRoot.getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewWine = viewRoot.findViewById(R.id.recycler_view_wine);
         recyclerViewWine.setLayoutManager(layoutManager);
-        RecyclerAdapter adapterWine = new RecyclerAdapter(viewRoot.getContext(), mImageNamesWine, mNamesWine, mSizesWine, mPricesWine);
+        RecyclerAdapter adapterWine = new RecyclerAdapter(viewRoot.getContext(), wines[0].getImagen(), wines[0].getNombre(), wines[0].getDescripcion(), String.valueOf(wines[0].getPrecio()));
         recyclerViewWine.setAdapter(adapterWine);
     }
 
     private void createFoodView() {
+        /*
         mImageNamesFood.add("https://static.vecteezy.com/system/resources/previews/021/952/562/original/tasty-hamburger-on-transparent-background-png.png");
         mNamesFood.add("Hamburguesa");
         mSizesFood.add("Clasica");
@@ -146,5 +158,6 @@ public class MenuFragment extends Fragment {
         recyclerViewFood.setLayoutManager(layoutManager);
         RecyclerAdapter adapterFood = new RecyclerAdapter(viewRoot.getContext(), mImageNamesFood, mNamesFood, mSizesFood, mPricesFood);
         recyclerViewFood.setAdapter(adapterFood);
+        */
     }
 }

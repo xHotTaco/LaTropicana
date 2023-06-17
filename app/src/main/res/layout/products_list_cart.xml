@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="1dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="320dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
+        android:layout_centerInParent="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_blue">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="180dp"
+                android:maxHeight="100dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beer"
+                android:layout_marginLeft="6dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/image_product_cart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Corona extra"
+                android:layout_marginTop="8dp"
+                android:id="@+id/txt_nombre_cart"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@+id/image_product_cart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="355ml"
+                android:gravity="center"
+                android:id="@+id/txt_tam"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="6dp"
+                android:fontFamily="@font/inter_extralight"
+                android:layout_toRightOf="@+id/image_product_cart"
+                android:layout_below="@+id/txt_nombre_cart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 21"
+                android:gravity="center"
+                android:id="@+id/txt_precio_cart"
+                android:layout_marginLeft="6dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_below="@+id/txt_tam"
+                android:layout_toRightOf="@+id/image_product_cart"
+                />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
