@@ -1,5 +1,6 @@
 package com.example.prueba2.ui.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.prueba2.Producto;
 import com.example.prueba2.R;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,8 +23,6 @@ import com.example.prueba2.R;
  */
 public class CuentaFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -26,19 +30,8 @@ public class CuentaFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CuentaFragment() {
-        // Required empty public constructor
-    }
+    public CuentaFragment() {}
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CuentaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CuentaFragment newInstance(String param1, String param2) {
         CuentaFragment fragment = new CuentaFragment();
         Bundle args = new Bundle();
@@ -57,10 +50,43 @@ public class CuentaFragment extends Fragment {
         }
     }
 
+    private TextView txt_total, txt_results;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cuenta, container, false);
+        View vistaCuenta = inflater.inflate(R.layout.fragment_cuenta, container, false);
+
+        txt_total = (TextView) vistaCuenta.findViewById(R.id.txt_cuenta_titulo);
+        txt_results = (TextView) vistaCuenta.findViewById(R.id.txt_resultado_cuenta);
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("cuenta", getActivity().MODE_PRIVATE);
+        float total = preferences.getFloat("cuenta", 0);
+        txt_total.setText("Total a pagar: " + " $: " + String.valueOf(total));
+
+        verPedidos();
+
+        return vistaCuenta;
+    }
+
+    private void verPedidos() {
+        SharedPreferences pedidos = getActivity().getSharedPreferences("pedido", getActivity().MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = pedidos.getString("arr_productos", null);
+        Type type = new com.google.gson.reflect.TypeToken<Producto[]>(){}.getType();
+        Producto[] productos = gson.fromJson(json, type);
+        if (productos == null) {
+            txt_results.setText("No hay productos en el carrito");
+        }
+        else {
+            String resultado = "";
+            for (int i = 0; i < productos.length; i++) {
+                resultado += "Producto: " + productos[i].getNombre() + "\n";
+                resultado += "Precio: " + productos[i].getPrecio() + "\n";
+                resultado += "Detalles: " + productos[i].getDescripcion() + "\n";
+                resultado += "--------------------------\n";
+            }
+            txt_results.setText(resultado);
+        }
     }
 }

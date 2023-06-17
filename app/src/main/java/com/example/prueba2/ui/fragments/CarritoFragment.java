@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.prueba2.Producto;
 import com.example.prueba2.R;
@@ -23,6 +24,8 @@ import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+
+import kotlin.internal.ProgressionUtilKt;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,8 +97,42 @@ public class CarritoFragment extends Fragment {
                 limpiarCarro(v);
             }
         });
+        Button pedido = viewRoot.findViewById(R.id.btn_realizar_pedido);
+        pedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                realizarPedido(v);
+            }
+        });
 
         return viewRoot;
+    }
+
+    public void realizarPedido(View view) {
+        // Mandar la cuenta total
+        SharedPreferences preferences = getActivity().getSharedPreferences("cuenta", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        float total = preferences.getFloat("cuenta", 0);
+        for (Producto producto : RecyclerAdapter.products) {
+            total += producto.getPrecio();
+        }
+        editor.putFloat("cuenta", total);
+        editor.commit();
+
+        // Mandar pedido a meseros y a la cuenta
+        SharedPreferences preferencesPedido = getActivity().getSharedPreferences("pedido", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editorPedido = preferencesPedido.edit();
+        Producto[] pedirProductos = new Producto[mNames.size()];
+        for (int i = 0; i < pedirProductos.length; ++i) {
+            pedirProductos[i] = new Producto(mNames.get(i), mPrices.get(i), mImages.get(i), mDescriptions.get(i));
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(pedirProductos);
+        editorPedido.putString("arr_productos", json);
+        editorPedido.apply();
+
+        limpiarCarro(view);
+        Toast.makeText(viewRoot.getContext(), "Pedido realizado", Toast.LENGTH_SHORT).show();
     }
 
     public void limpiarCarro(View view) {

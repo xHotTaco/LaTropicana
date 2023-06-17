@@ -97,12 +97,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         String json = gson.toJson(products);
         editor.putString("productos", json);
         editor.apply();
-        /*
-        editor.putString("image", image);
-        editor.putString("name", name);
-        editor.putString("size", size);
-        editor.putString("price", price);
-        editor.commit();
-         */
     }
 }
