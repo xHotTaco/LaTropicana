@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.prueba2.ui.slideshow.SlideshowFragment;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText uname, passwd;
 
-    private Empleado[] employees = new Empleado[4];
+    private Empleado[] employees = new Empleado[5];
     private Cliente[] mesas = new Cliente[8];
 
     @Override
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         employees[1] = new Empleado("victor", "123", "Empleado", true);
         employees[2] = new Empleado("carlos", "123", "Empleado", true);
         employees[3] = new Empleado("diego", "123", "Empleado", true);
+        employees[4] = SlideshowFragment.empleado; // TODO: solo un emplado por ahora
         for (int i=0; i<8; ++i) {
             mesas[i] = new Cliente("mesa" + i, "mesa", "Cliente", true);
         }

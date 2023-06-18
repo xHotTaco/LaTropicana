@@ -7,12 +7,24 @@
     tools:context=".ui.gallery.GalleryFragment"
     android:background="@drawable/fondo_degradado">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="125dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="143dp"
+        android:src="@drawable/spoon_fork"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/txtNombreProducto"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="68dp"
         android:backgroundTint="#1B96F4"
         android:ems="10"
@@ -28,67 +40,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="324dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionProducto" />
-
-    <EditText
-        android:id="@+id/txtDescripcionProducto"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="68dp"
-        android:backgroundTint="#1B96F4"
-        android:ems="10"
-        android:fontFamily="@font/inter_extralight"
-        android:hint="@string/infoPro"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:textColor="#FFFFFFFF"
-        android:textColorHint="#BEBEBE"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrecio" />
-
-    <TextView
-        android:id="@+id/btnRegistrarProducto"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="144dp"
-        android:background="@drawable/stroke_btn"
-        android:fontFamily="@font/inter_semibold"
-        android:padding="12dp"
-        android:text="@string/Registro"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.0" />
-
     <EditText
         android:id="@+id/txtPrecio"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="68dp"
         android:backgroundTint="#1B96F4"
         android:ems="10"
@@ -104,16 +61,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreProducto" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="125dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="143dp"
-        android:src="@mipmap/food_icon"
+    <EditText
+        android:id="@+id/txtDescripcionProducto"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="#1B96F4"
+        android:ems="10"
+        android:fontFamily="@font/inter_extralight"
+        android:hint="@string/infoPro"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:textColor="#FFFFFFFF"
+        android:textColorHint="#BEBEBE"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecio" />
+
+    <EditText
+        android:id="@+id/txtImagenProducto"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="#1B96F4"
+        android:ems="10"
+        android:fontFamily="@font/inter_extralight"
+        android:hint="URL Imagen"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#BEBEBE"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionProducto" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="324dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtImagenProducto" />
+
+    <TextView
+        android:id="@+id/btnRegistrarProducto"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="144dp"
+        android:background="@drawable/stroke_btn"
+        android:fontFamily="@font/inter_semibold"
+        android:padding="12dp"
+        android:text="@string/Registro"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
