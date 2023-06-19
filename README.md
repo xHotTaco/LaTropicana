@@ -18,7 +18,7 @@ Los empleados tienen un menu donde visualizan las mesas del bar y pueden acceder
 Todo esto mediante uso de:
 - Control datos.
 - Diversos componentes gráficos.
-- Menu lateral y menu horizontal.
+- Menu lateral y menu de pestañas.
 - Estructuras dinámicas para el almacenamiento de información.
 - Diseño gráfico, imagenes e iconos.
 - Multiples activity´s.
