@@ -25,4 +25,4 @@ Todo esto mediante uso de:
 - Uso del paradigma orientado a objetos.
 - Y excelentes conocimientos de programación móvil.
 
-Esto es lo que compone nuestra app.
+Esto es lo que compone nuestra aplicación móvil La Tropicana.
