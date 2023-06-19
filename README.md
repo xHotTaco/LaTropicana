@@ -24,3 +24,5 @@ Todo esto mediante uso de:
 - Multiples activity´s.
 - Uso del paradigma orientado a objetos.
 - Y excelentes conocimientos de programación móvil.
+
+Esto es lo que compone nuestra app.
