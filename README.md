@@ -5,10 +5,10 @@ Grupo 5-P
 Ceti Colomos
 
 Equipo #2 
-Victor Gerardo Rodriguez Barragan
-Carlos Arturo Lopez Gutierrez
-Victor David Medina Amezcua
-Diego Jared Almaraz Rodriguez
+- Victor Gerardo Rodriguez Barragan.
+- Carlos Arturo Lopez Gutierrez.
+- Victor David Medina Amezcua.
+- Diego Jared Almaraz Rodriguez.
 
 
 La aplicación realizada ofrece tanto a los empleados del bar como a los clientes satisfacer sus nececidades y ocupaciones.
